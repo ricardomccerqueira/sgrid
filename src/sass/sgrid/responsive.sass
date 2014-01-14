@@ -1,0 +1,28 @@
+@import "compass/css3"
+@import "partials/variables"
+@import "partials/reset"
+@import "partials/prototype-wrappers"
+
+@import "partials/prototype-grid"
+@import "partials/prototype-tablet"
+@import "partials/prototype-mobile"
+  
+.mobile-show
+  display: none
+
+.tablet-show
+  display: none
+
+@media (min-width: $width-mobile + $media-increment ) and ( max-width: $width-tablet)
+  .tablet-hide
+    display: none
+
+  .tablet-show
+    display: block
+
+@media (max-width: $width-mobile)
+  .mobile-hide
+    display: none
+
+  .mobile-show
+    display: block

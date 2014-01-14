@@ -1,0 +1,8 @@
+@import "grid-wrappers"
+@import "grid-columns"
+
+@for $i from 1 through 20
+  $num: $i * $grid-interval
+
+  .mobile-#{$num}
+    @extend %column-#{$num}-width

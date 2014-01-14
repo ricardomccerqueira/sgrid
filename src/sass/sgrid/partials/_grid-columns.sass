@@ -1,0 +1,21 @@
+@for $i from 1 through 20
+  $num: $i * $grid-interval
+  $percent: $num * 1%
+
+  %column-#{$num}-width
+    float: left
+    width: $percent
+    margin: $horizontal-gutter / 2 0
+    +box-sizing(border-box)
+
+@for $i from 1 through 2
+  $num: $i * 33
+  $one-third: 1/3
+  $decimal: $i * $one-third
+  $percent: ($num + $decimal) * 1%
+
+  %column-#{$num}-width
+    float: left
+    width: $percent
+    margin: $horizontal-gutter / 2 0
+    +box-sizing(border-box)

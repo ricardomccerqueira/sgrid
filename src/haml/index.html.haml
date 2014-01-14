@@ -1,0 +1,12 @@
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %title sGrid
+    %link{rel: "stylesheet", href: "./assets/css/main.css"}
+
+  %body
+    = Haml::Engine.new(File.read('src/haml/partials/_header.haml')).render
+    = Haml::Engine.new(File.read('src/haml/partials/_menu.haml')).render
+    = Haml::Engine.new(File.read('src/haml/partials/_grid.haml')).render
+
+  %script{src: "./assets/js/application.js", type: 'text/javascript'}
