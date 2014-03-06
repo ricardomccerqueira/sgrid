@@ -9,4 +9,32 @@
   max-width: $max-width
 
 %inner-wrapper
-  margin: 0 $vertical-gutter / 2
+  @extend %horizontal-gutter-margin
+  @extend %horizontal-gutter-padding
+
+%vertical-gutter-margin
+  margin: $horizontal-gutter / 2 0
+  
+  @media (min-width: $width-mobile + $media-increment ) and ( max-width: $width-tablet)
+    margin: $horizontal-gutter / 4 0
+  
+  @media (max-width: $width-mobile)
+    margin: $horizontal-gutter / 8 0
+
+%horizontal-gutter-margin
+  margin: 0 $horizontal-gutter / 2
+  
+  @media (min-width: $width-mobile + $media-increment ) and ( max-width: $width-tablet)
+    margin: 0 $horizontal-gutter / 4
+  
+  @media (max-width: $width-mobile)
+    margin: 0 $horizontal-gutter / 8
+  
+%horizontal-gutter-padding
+  padding: $horizontal-gutter / 2
+
+  @media (min-width: $width-mobile + $media-increment ) and ( max-width: $width-tablet)
+    padding: $horizontal-gutter / 4
+
+  @media (max-width: $width-mobile)
+    padding: $horizontal-gutter / 8

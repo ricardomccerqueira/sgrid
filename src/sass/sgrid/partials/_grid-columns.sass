@@ -5,7 +5,7 @@
   %column-#{$num}-width
     float: left
     width: $percent
-    margin: $horizontal-gutter / 2 0
+    margin: $vertical-gutter / 2 0
     +box-sizing(border-box)
 
 @for $i from 1 through 2
@@ -17,5 +17,46 @@
   %column-#{$num}-width
     float: left
     width: $percent
-    margin: $horizontal-gutter / 2 0
+    margin: $vertical-gutter / 2 0
     +box-sizing(border-box)
+
+
+@media (min-width: $width-mobile + $media-increment ) and ( max-width: $width-tablet)
+  @for $i from 1 through 20
+    $num: $i * $grid-interval
+    $percent: $num * 1%
+    
+    %column-#{$num}-width
+      margin: $vertical-gutter / 4 0
+
+    %column-tablet-#{$num}-width
+      float: left
+      width: $percent
+      margin: $vertical-gutter / 4 0
+      +box-sizing(border-box)
+
+  @for $i from 1 through 2
+    $num: $i * 33
+
+    %column-#{$num}-width
+      margin: $vertical-gutter / 4 0
+
+@media (max-width: $width-mobile)
+  @for $i from 1 through 20
+    $num: $i * $grid-interval
+    $percent: $num * 1%
+    
+    %column-#{$num}-width
+      margin: $vertical-gutter / 8 0
+
+    %column-mobile-#{$num}-width
+      float: left
+      width: $percent
+      margin: $vertical-gutter / 8 0
+      +box-sizing(border-box)
+
+  @for $i from 1 through 2
+    $num: $i * 33
+
+    %column-#{$num}-width
+      margin: $vertical-gutter / 8 0
