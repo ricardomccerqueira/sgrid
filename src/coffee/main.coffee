@@ -1,4 +1,2 @@
-Namespace = ((window) ->
-  public_ = {}
-  public_
-)(window)
+class App
+  console.log 'test'

@@ -1,0 +1,39 @@
+// grid columns
+
+%#{$grid-namespace}-column
+  float: $grid-direction
+  padding: $grid-gutter / 2
+  +box-sizing(border-box)
+
+@for $i from 1 through 2
+  $num: $i * 33
+  $one-third: 1/3
+  $decimal: $i * $one-third
+  $percent: ($num + $decimal) * 1%
+
+  @each $mediaquery in $mediaqueries
+    $key: unquote(nth($mediaquery, 1))
+    $query: unquote(nth($mediaquery, 3))
+    
+    .#{$grid-namespace}-column__#{$key}--#{$num},
+    %#{$grid-namespace}-column__#{$key}--#{$num}
+      @extend %#{$grid-namespace}-column
+
+      @media #{$query}
+        width: $percent
+
+@for $i from 1 through 20
+  $num: $i * $grid-interval
+  $percent: $num * 1%
+
+  @each $mediaquery in $mediaqueries
+    $key: unquote(nth($mediaquery, 1))
+    $query: unquote(nth($mediaquery, 3))
+    
+    .#{$grid-namespace}-column__#{$key}--#{$num},
+    %#{$grid-namespace}-column__#{$key}--#{$num}
+      @extend %#{$grid-namespace}-column
+
+      @media #{$query}
+        width: $percent
+      

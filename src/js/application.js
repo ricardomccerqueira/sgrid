@@ -1,7 +1,10 @@
-var Namespace;
+var App;
 
-Namespace = (function(window) {
-  var public_;
-  public_ = {};
-  return public_;
-})(window);
+App = (function() {
+  function App() {}
+
+  console.log('test');
+
+  return App;
+
+})();

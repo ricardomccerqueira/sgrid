@@ -1,0 +1,16 @@
+// grid row using grids max width and centered on page
+
+
+.#{$grid-namespace}-row,
+%#{$grid-namespace}-row
+  width: 100%
+  margin: auto
+  @extend %clearfix
+
+  @each $mediaquery in $mediaqueries
+    $key: unquote(nth($mediaquery, 1))
+    $maxwidth: nth($mediaquery, 2)
+    $query: unquote(nth($mediaquery, 3))
+    
+    @media #{$query}
+      max-width: unquote(nth($maxwidth, 2))

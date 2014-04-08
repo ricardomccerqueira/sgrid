@@ -1,8 +1,0 @@
-@import "grid-wrappers"
-@import "grid-columns"
-
-@for $i from 1 through 20
-  $num: $i * $grid-interval
-
-  .tablet-#{$num}
-    @extend %column-tablet-#{$num}-width

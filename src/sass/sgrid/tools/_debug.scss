@@ -1,0 +1,29 @@
+@function debug($list) {
+    // We open the bracket
+    $result: "[ ";
+
+    // For each item in list
+    @each $item in $list {
+        // We test its length
+        // If it's more than one item long
+        @if length($item) > 1 {
+            // We deal with a nested list
+            $result: $result + debug($item);
+        }
+        // Else we append the item to $result
+        @else {
+            $result: $result + $item;
+        }
+
+        // If we are not dealing with the last item of the list
+        // We add a comma and a space
+        @if index($list, $item) != length($list) {
+            $result: $result + ", ";
+        }
+    }
+
+    // We close the bracket
+    // And return the string
+    $result: $result + " ]";
+    @return quote($result);
+}
