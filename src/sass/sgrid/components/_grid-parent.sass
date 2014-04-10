@@ -1,6 +1,15 @@
-// 100% width item that can wrap around the grid
+// 100% width item with a max-width
 
 .#{$grid-namespace}-parent,
 %#{$grid-namespace}-parent
   width: 100%
+  margin: auto
   @extend %clearfix
+
+  @each $mediaquery in $mediaqueries
+    $key: unquote(nth($mediaquery, 1))
+    $maxwidth: nth($mediaquery, 2)
+    $query: unquote(nth($mediaquery, 3))
+    
+    @media #{$query}
+      max-width: unquote(nth($maxwidth, 2))

@@ -5,22 +5,16 @@
   padding: $grid-gutter / 2
   +box-sizing(border-box)
 
-@for $i from 1 through 2
-  $num: $i * 33
-  $one-third: 1/3
-  $decimal: $i * $one-third
-  $percent: ($num + $decimal) * 1%
+@each $mediaquery in $mediaqueries
+  $key: unquote(nth($mediaquery, 1))
+  $query: unquote(nth($mediaquery, 3))
+  
+  .#{$grid-namespace}-column__#{$key}--33,
+  %#{$grid-namespace}-column__#{$key}--33
+    @extend %#{$grid-namespace}-column
 
-  @each $mediaquery in $mediaqueries
-    $key: unquote(nth($mediaquery, 1))
-    $query: unquote(nth($mediaquery, 3))
-    
-    .#{$grid-namespace}-column__#{$key}--#{$num},
-    %#{$grid-namespace}-column__#{$key}--#{$num}
-      @extend %#{$grid-namespace}-column
-
-      @media #{$query}
-        width: $percent
+    @media #{$query}
+      width: 33.33333%
 
 @for $i from 1 through 20
   $num: $i * $grid-interval
