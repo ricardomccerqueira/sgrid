@@ -1,7 +1,7 @@
 $mediaqueries: ()
 
 @mixin addMediaQuery($state, $maxwidth, $query)
-  $mediaqueries: append($mediaqueries, ($state, $maxwidth, $query), comma)
+  $mediaqueries: append($mediaqueries, ($state, $maxwidth, $query), comma) !global
 
 = query_state($queries)
   @each $query_name in $queries
