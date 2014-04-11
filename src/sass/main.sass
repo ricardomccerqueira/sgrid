@@ -1,3 +1,21 @@
 @import "sgrid/all"
 
 @import "partials/section_grid"
+
+
+// crap to delete
+.debug
+  content: debug($mediaqueries)
+
+.stuff
+  +query_state(mobile tablet)
+    position: relative
+
+  +query_state(mobile)
+    display: block
+
+  +query_state(tablet)
+    display: none
+
+.grid-inner
+  outline: 1px solid black

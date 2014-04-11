@@ -1,0 +1,29 @@
+/* 
+  generating rapid prototype classes for grid-column component
+
+
+@if $grid-generate-classes == true  
+  .#{$grid-namespace}-#{$grid-namespace__column}
+    %#{$grid-namespace}-#{$grid-namespace__column}
+
+  .#{$grid-namespace}-#{$grid-namespace__column}__#{$grid-namespace__inner-content}
+    %#{$grid-namespace}-#{$grid-namespace__column}__#{$grid-namespace__inner-content}
+
+  @each $mediaquery in $mediaqueries
+    $key: unquote(nth($mediaquery, 1))
+    $query: unquote(nth($mediaquery, 3))
+    
+    .#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--33,
+      @extend %#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--33
+
+  @for $i from 1 through 20
+    $num: $i * $grid-interval
+    $percent: $num * 1%
+
+    @each $mediaquery in $mediaqueries
+      $key: unquote(nth($mediaquery, 1))
+      $query: unquote(nth($mediaquery, 3))
+      
+      .#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--#{$num},
+        @extend %#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--#{$num}
+        

@@ -1,7 +1,12 @@
-// 100% width item with a max-width
+/* 
+  grid parent
+  
+  $grid-namespace}-$grid-namespace__parent
+  full width item with a max width defined when registering 
+  the media queries, this is the main container for any grid row
+  
 
-.#{$grid-namespace}-parent,
-%#{$grid-namespace}-parent
+%#{$grid-namespace}-#{$grid-namespace__parent}
   width: 100%
   margin: auto
   @extend %clearfix

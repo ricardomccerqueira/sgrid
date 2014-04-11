@@ -1,0 +1,4 @@
+@if $grid-generate-media-queries == true
+  +addMediaQuery('mobile', ('body-max-width', '100%'), "(max-width: 400px)")
+  +addMediaQuery('tablet', ('body-max-width', '100%'), "(min-width: 400px) and (max-width: 960px)")
+  +addMediaQuery('desktop', ('body-max-width', '1070px'), "(min-width: 960px)")
