@@ -1,11 +1,12 @@
 $mediaqueries: ()
 
-@mixin addMediaQuery($state, $maxwidth, $query)
-  $mediaqueries: append($mediaqueries, ($state, $maxwidth, $query), comma) !global
+@mixin addMediaQuery($query_object)
+  $mediaqueries: append($mediaqueries, $query_object) !global
+
 
 = query_state($queries)
-  @each $query_name in $queries
-    @each $device in $mediaqueries
-      @if unquote(nth($device, 1)) == $query_name
-        @media screen and #{nth($device, 3)}
+  @each $query-request in $queries   
+    @each $query-name, $body-max-width, $query in $mediaqueries
+      @if unquote($query-request) == unquote(nth($query-name,2))
+        @media screen and #{nth($query,2)}
           @content

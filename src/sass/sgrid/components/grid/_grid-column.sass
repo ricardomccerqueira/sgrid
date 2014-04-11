@@ -11,7 +11,7 @@
   instead of adding directly to the column is so we can have the option
   of having full width elements on the column
 
-  $grid-namespace}-$grid-namespace__column__$key--33
+  $grid-namespace}-$grid-namespace__column__$query-name--33
   this creates an extend for every width on every 
   device you registered as possible media queries
 
@@ -23,26 +23,20 @@
 %#{$grid-namespace}-#{$grid-namespace__column}__#{$grid-namespace__inner-content}
   padding: $grid-gutter / 2
 
-@each $mediaquery in $mediaqueries
-  $key: unquote(nth($mediaquery, 1))
-  $query: unquote(nth($mediaquery, 3))
-  
-  %#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--33
+@each $query-name, $body-max-width, $query in $mediaqueries  
+  %#{$grid-namespace}-#{$grid-namespace__column}__#{nth($query-name,2)}--33
     @extend %#{$grid-namespace}-#{$grid-namespace__column}
 
-    @media #{$query}
+    @media #{nth($query,2)}
       width: 33.33333%
 
 @for $i from 1 through 20
   $num: $i * $grid-interval
   $percent: $num * 1%
 
-  @each $mediaquery in $mediaqueries
-    $key: unquote(nth($mediaquery, 1))
-    $query: unquote(nth($mediaquery, 3))
-    
-    %#{$grid-namespace}-#{$grid-namespace__column}__#{$key}--#{$num}
+  @each $query-name, $body-max-width, $query in $mediaqueries
+    %#{$grid-namespace}-#{$grid-namespace__column}__#{nth($query-name,2)}--#{$num}
       @extend %#{$grid-namespace}-#{$grid-namespace__column}
 
-      @media #{$query}
+      @media #{nth($query,2)}
         width: $percent
