@@ -9,6 +9,9 @@
 @import "settings/grid/mediaqueries"
 @import "settings/grid/layout"
 
+// DELETE THIS TEST CRAP
+$grid-generate-classes: false
+
 @import "components/grid/grid-parent"
 @import "components/grid/grid-row"
 @import "components/grid/grid-column"
@@ -16,3 +19,14 @@
 @import "objects/grid/grid-parent"
 @import "objects/grid/grid-row"
 @import "objects/grid/grid-column"
+
+
+
+// DELETE THIS TEST CRAP
+
+.test
+  +query_state(mobile (child-of: '.ie8'))
+    display: block
+
+  +query_state(tablet (has-class: '.no-js'))
+    display: none

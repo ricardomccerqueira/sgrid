@@ -1,11 +1,59 @@
+/* 
+  media query builder methods
+
+
+  $mediaqueries: ()
+  Global var where we can push our queries states into, we can create any
+  kind of custom query with the names we want, mobile first or not.
+  like so:
+
+  +registerMediaQuery((query-name: 'mobile', body-max-width: '100%', query: '(max-width: 400px)'))
+  
+
+  = query_state($queries)
+  after registering the media queries, we can use this method to use them
+  it accepts a single match, array, and parent / self classes, 
+  like so:
+
+  this will do the media query we registered as mobile:
+  +query_state(mobile)
+    display: block
+  
+  this will do the both the media query we registered as mobile and tablet
+  +query_state(mobile tablet)
+    display: block
+
+  this will do the both the media query we registered as mobile and tablet
+  and also assing this content when the item is a child of .ieSupreme
+  +query_state(mobile tablet (child-of: ".ieSupreme"))
+    display: block
+
+  this will do the media query we registered as desktop
+  and also assing this content when the item also has the id #whynotanid
+  +query_state(desktop (has-class: "#whynotanid"))
+    display: block
+
+
+
+
 $mediaqueries: ()
 
-@mixin addMediaQuery($query_object)
+@mixin registerMediaQuery($query_object)
   $mediaqueries: append($mediaqueries, $query_object) !global
 
 
 = query_state($queries)
-  @each $query-request in $queries   
+  @each $query-request in $queries
+
+    @if type-of($query-request) == 'map'
+      @if map-get($query-request,child-of)
+        #{map-get($query-request,child-of)} &
+          @content
+
+      @if map-get($query-request,has-class)
+        &#{map-get($query-request,has-class)}
+          @content
+      
     @each $query-name, $body-max-width, $query in $mediaqueries
       @if unquote($query-request) == unquote(nth($query-name,2))
         @media screen and #{nth($query,2)}

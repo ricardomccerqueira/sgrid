@@ -1,4 +1,4 @@
 @if $grid-generate-media-queries == true
-  +addMediaQuery((query-name: 'mobile', body-max-width: '100%', query: '(max-width: 400px)'))
-  +addMediaQuery((query-name: 'tablet', body-max-width: '100%', query: '(min-width: 400px) and (max-width: 800px)'))
-  +addMediaQuery((query-name: 'desktop', body-max-width: '1070px', query: '(min-width: 800px)'))
+  +registerMediaQuery((query-name: 'mobile', body-max-width: '100%', query: '(max-width: 400px)'))
+  +registerMediaQuery((query-name: 'tablet', body-max-width: '100%', query: '(min-width: 400px) and (max-width: 800px)'))
+  +registerMediaQuery((query-name: 'desktop', body-max-width: '1070px', query: '(min-width: 800px)'))
